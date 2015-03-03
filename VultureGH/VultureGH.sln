@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VultureGH", "VultureGH\VultureGH.csproj", "{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vulture", "..\vulture\vulture\vulture.csproj", "{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug32|Any CPU = Debug32|Any CPU
+		Debug64|Any CPU = Debug64|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Debug|Any CPU.ActiveCfg = Debug64|Any CPU
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Debug|Any CPU.Build.0 = Debug64|Any CPU
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Debug32|Any CPU.ActiveCfg = Debug32|Any CPU
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Debug32|Any CPU.Build.0 = Debug32|Any CPU
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Debug64|Any CPU.ActiveCfg = Debug64|Any CPU
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Debug64|Any CPU.Build.0 = Debug64|Any CPU
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Debug32|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Debug32|Any CPU.Build.0 = Debug|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Debug64|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Debug64|Any CPU.Build.0 = Debug|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>vulture.1.0.0.0.Fakes</name>
+    </assembly>
+    <members>
+        <member name="T:vultureCommunicator.Fakes.Shimvulture">
+            <summary>Shim type of vultureCommunicator.vulture</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.Shimvulture.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.Shimvulture.#ctor(vultureCommunicator.vulture)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.Shimvulture.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.Shimvulture.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.Shimvulture.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.Shimvulture.Constructor">
+            <summary>Sets the shim of vulture.vulture()</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.Shimvulture.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.ShimvultureMesh">
+            <summary>Shim type of vultureCommunicator.vultureMesh</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureMesh.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureMesh.#ctor(vultureCommunicator.vultureMesh)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureMesh.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureMesh.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.ShimvultureMesh.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.ShimvultureMesh.Constructor">
+            <summary>Sets the shim of vultureMesh.vultureMesh()</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.ShimvultureMesh.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.ShimvultureVertex">
+            <summary>Shim type of vultureCommunicator.vultureVertex</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureVertex.#ctor">
+            <summary>Initializes a new shim instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureVertex.#ctor(vultureCommunicator.vultureVertex)">
+            <summary>Initializes a new shim for the given instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureVertex.BehaveAsCurrent">
+            <summary>Assigns the &apos;Current&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.ShimvultureVertex.BehaveAsNotImplemented">
+            <summary>Assigns the &apos;NotImplemented&apos; behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.ShimvultureVertex.Behavior">
+            <summary>Assigns the behavior for all methods of the shimmed type</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.ShimvultureVertex.Constructor">
+            <summary>Sets the shim of vultureVertex.vultureVertex()</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.ShimvultureVertex.AllInstances">
+            <summary>Define shims for all instances members</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.Stubvulture">
+            <summary>Stub type of vultureCommunicator.vulture</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.Stubvulture.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.Stubvulture.InitializeStub">
+            <summary>Initializes a new instance of type Stubvulture</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.Stubvulture.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.Stubvulture.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.Stubvulture.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.StubvultureMesh">
+            <summary>Stub type of vultureCommunicator.vultureMesh</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.StubvultureMesh.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.StubvultureMesh.InitializeStub">
+            <summary>Initializes a new instance of type StubvultureMesh</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.StubvultureMesh.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.StubvultureMesh.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.StubvultureMesh.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+        <member name="T:vultureCommunicator.Fakes.StubvultureVertex">
+            <summary>Stub type of vultureCommunicator.vultureVertex</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.StubvultureVertex.#ctor">
+            <summary>Initializes a new instance</summary>
+        </member>
+        <member name="M:vultureCommunicator.Fakes.StubvultureVertex.InitializeStub">
+            <summary>Initializes a new instance of type StubvultureVertex</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.StubvultureVertex.CallBase">
+            <summary>Gets or sets a value that indicates if the base method should be called instead of the fallback behavior</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.StubvultureVertex.InstanceBehavior">
+            <summary>Gets or sets the instance behavior.</summary>
+        </member>
+        <member name="P:vultureCommunicator.Fakes.StubvultureVertex.InstanceObserver">
+            <summary>Gets or sets the instance observer.</summary>
+        </member>
+    </members>
+</doc>
