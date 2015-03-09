@@ -25,6 +25,8 @@ namespace vultureCommunicator
         public int vertexCount;
         public Vector3[] verticesVec3;
         public Vector3[] normalsVec3;
+        public Vector3[] indicesVec3;
+        public Vector2[] texVec2;
     }
 
     [Serializable]

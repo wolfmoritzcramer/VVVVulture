@@ -109,24 +109,28 @@ namespace VultureGH
 
             Vector3[] vertices3 = new Vector3[mesh.Vertices.Count];
             Vector3[] normals3 = new Vector3[mesh.Normals.Count];
+            Vector2[] tex2 = new Vector2[mesh.TextureCoordinates.Count];
+            Vector3[] indices3 = new Vector3[mesh.Faces.Count];
+
             int[] indicesInt = new int[mesh.Faces.Count*3];
            
             for (int v = 0; v < mesh.Vertices.Count; v++)
             {
                 vertices3[v] = new Vector3(mesh.Vertices[v].X, mesh.Vertices[v].Y, mesh.Vertices[v].Z);
                 normals3[v] = new Vector3(mesh.Normals[v].X, mesh.Normals[v].Y, mesh.Normals[v].Z);
+                tex2[v] = new Vector2(mesh.TextureCoordinates[v].X, mesh.TextureCoordinates[v].Y);
             }
 
-            for (int f = 0; f < mesh.Faces.Count; f+=3)
+            for (int f = 0; f < mesh.Faces.Count; f++)
             {
-                indicesInt[f] = mesh.Faces[f].A;
-                indicesInt[f+1] = mesh.Faces[f].B;
-                indicesInt[f+2] = mesh.Faces[f].C;
+                indices3[f] = new Vector3(mesh.Faces[f].A, mesh.Faces[f].B, mesh.Faces[f].C);
             }
 
             vMesh.verticesVec3 = vertices3;
             vMesh.normalsVec3 = normals3;
-            vMesh.indices = indicesInt;
+            vMesh.texVec2 = tex2;
+            vMesh.indicesVec3 = indices3;
+
 
             return vMesh;
         }

@@ -67,7 +67,7 @@
     </Reference>
     <Reference Include="vulture, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\vulture.dll</HintPath>
+      <HintPath>..\..\vulture\vulture\bin\Debug\vulture.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
