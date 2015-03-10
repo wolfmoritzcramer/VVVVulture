@@ -1,1 +1,0 @@
-copy /Y "$(TargetDir)$(ProjectName).dll" "C:\Users\Administrator\Desktop\PluginTest\plugins\StringStringMemory\bin\Dynamic\$(ProjectName).dll"
