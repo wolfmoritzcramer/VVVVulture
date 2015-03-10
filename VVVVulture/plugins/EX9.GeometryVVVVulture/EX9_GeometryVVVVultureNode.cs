@@ -85,12 +85,17 @@ namespace VVVV.Nodes
 						FOutput[0] = "Look! There he is! And he has "  + Vulture.meshes.Length + " Mesh(es) for you!";
 						
 						for (int i = 0; i < Vulture.meshes.Length; i++){
-							
+		
 							Fvertices3[i] = Vulture.meshes[i].verticesVec3.ToSpread();
+							Fvertices3.SliceCount = Vulture.meshes.Length;
 							Fnormals3[i] =Vulture.meshes[i].normalsVec3.ToSpread();
+							Fnormals3.SliceCount = Vulture.meshes.Length;
 							Ftex2[i] = Vulture.meshes[i].texVec2.ToSpread();
+							Ftex2.SliceCount = Vulture.meshes.Length;
 							Findices[i] = Vulture.meshes[i].indicesVec3.ToSpread();
-						}						
+							Findices.SliceCount = Vulture.meshes.Length;
+						
+						}
 						//FOutput[0] = FInd.Length.ToString();
 					}
 					else{

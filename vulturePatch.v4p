@@ -103,7 +103,7 @@
    </PIN>
    </NODE>
    <NODE systemname="VVVVulture (EX9.Geometry)" filename="VVVVulture\plugins\EX9.GeometryVVVVulture\EX9.GeometryVVVVulture.csproj" nodename="VVVVulture (EX9.Geometry)" componentmode="Hidden" id="51">
-   <BOUNDS type="Node" left="1104" top="1644" width="1404" height="276">
+   <BOUNDS type="Node" left="1104" top="1740" width="1404" height="276">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -126,6 +126,10 @@
    <PIN pinname="IndicesXYZ" visible="1">
    </PIN>
    <PIN pinname="Indices Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Vertices Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Normals Bin Size" visible="1">
    </PIN>
    </NODE>
    <LINK srcnodeid="51" srcpinname="Output" dstnodeid="49" dstpinname="Input String">
@@ -163,7 +167,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="624" top="6204" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="-8688" top="144" width="8400" height="7524">
+   <BOUNDS type="Window" left="-9060" top="552" width="8400" height="7524">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -185,7 +189,7 @@
    </PIN>
    <PIN pinname="Windowed Backbuffer Format" slicecount="1" values="X8R8G8B8">
    </PIN>
-   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="8">
+   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="5">
    </PIN>
    <PIN pinname="Windowed Backbuffer Count" slicecount="1" values="3">
    </PIN>
@@ -291,5 +295,93 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="62" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Enabled">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="65" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4236" top="1776" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4236" top="1776" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="3" values="0,,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Indices Bin Size" dstnodeid="65" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="67" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4056" top="3564" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4056" top="3564" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="2" values="0,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Vertices Bin Size" dstnodeid="67" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="68" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="5100" top="3636" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5100" top="3636" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="2" values="0,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Normals Bin Size" dstnodeid="68" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="70" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="6072" top="3648" width="795" height="960">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6072" top="3648" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="4" values="0,,,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0, 1|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Indices Bin Size" dstnodeid="70" dstpinname="Y Input Value">
    </LINK>
    </PATCH>

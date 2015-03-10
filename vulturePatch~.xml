@@ -86,32 +86,10 @@
    </NODE>
    <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="38" dstpinname="Save">
    </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="47" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="168" top="564" width="420" height="396">
-   </BOUNDS>
-   <BOUNDS type="Node" left="168" top="564" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="X Input Value" slicecount="1" values="1">
-   </PIN>
-   <PIN pinname="Y Output Value" visible="1">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="Enabled">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="49" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="2736" top="2460" width="4212" height="288">
+   <BOUNDS type="Box" left="5112" top="2712" width="4212" height="288">
    </BOUNDS>
-   <BOUNDS type="Node" left="2736" top="2460" width="0" height="0">
+   <BOUNDS type="Node" left="5112" top="2712" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -121,9 +99,11 @@
    </PIN>
    <PIN pinname="Input String" visible="1" slicecount="1" values="|Vulture is still there!|">
    </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Output">
+   </PIN>
    </NODE>
    <NODE systemname="VVVVulture (EX9.Geometry)" filename="VVVVulture\plugins\EX9.GeometryVVVVulture\EX9.GeometryVVVVulture.csproj" nodename="VVVVulture (EX9.Geometry)" componentmode="Hidden" id="51">
-   <BOUNDS type="Node" left="180" top="1644" width="1404" height="276">
+   <BOUNDS type="Node" left="1104" top="1740" width="1404" height="276">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
@@ -131,7 +111,7 @@
    </PIN>
    <PIN pinname="Read from File" slicecount="1" visible="1" values="1">
    </PIN>
-   <PIN pinname="Enabled" visible="1">
+   <PIN pinname="Enabled" visible="1" slicecount="1" values="1">
    </PIN>
    <PIN pinname="Mesh" visible="1">
    </PIN>
@@ -147,10 +127,12 @@
    </PIN>
    <PIN pinname="Indices Bin Size" visible="1">
    </PIN>
+   <PIN pinname="Vertices Bin Size" visible="1">
+   </PIN>
+   <PIN pinname="Normals Bin Size" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="51" srcpinname="Output" dstnodeid="49" dstpinname="Input String">
-   </LINK>
-   <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Enabled">
    </LINK>
    <NODE systemname="GouraudDirectional (EX9.Effect)" filename="%VVVV%\lib\nodes\effects\GouraudDirectional.fx" nodename="GouraudDirectional (EX9.Effect)" componentmode="Hidden" id="52">
    <BOUNDS type="Node" left="1092" top="3924" width="100" height="100">
@@ -185,7 +167,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="624" top="6204" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="-8688" top="144" width="8400" height="7524">
+   <BOUNDS type="Window" left="-9612" top="660" width="8400" height="7524">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -207,7 +189,7 @@
    </PIN>
    <PIN pinname="Windowed Backbuffer Format" slicecount="1" values="X8R8G8B8">
    </PIN>
-   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="8">
+   <PIN pinname="Windowed Antialiasing Quality Level" slicecount="1" values="5">
    </PIN>
    <PIN pinname="Windowed Backbuffer Count" slicecount="1" values="3">
    </PIN>
@@ -225,9 +207,9 @@
    <LINK srcnodeid="52" srcpinname="Layer" dstnodeid="14" dstpinname="Layer 2">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="57" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="1524" top="1272" width="3660" height="240">
+   <BOUNDS type="Box" left="2448" top="1272" width="3660" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="1524" top="1272" width="0" height="0">
+   <BOUNDS type="Node" left="2448" top="1272" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input String" slicecount="1" visible="1" values="|Sample File\vvvvulture.vulture|">
    </PIN>
@@ -239,33 +221,15 @@
    </PIN>
    <PIN pinname="String Type" slicecount="1" values="Filename">
    </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="File">
+   </PIN>
    </NODE>
    <LINK srcnodeid="57" srcpinname="Output String" dstnodeid="51" dstpinname="File">
-   </LINK>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="58" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="708" top="828" width="420" height="396">
-   </BOUNDS>
-   <BOUNDS type="Node" left="708" top="828" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Boolean">
-   </PIN>
-   <PIN pinname="Behavior" slicecount="1" values="Toggle">
-   </PIN>
-   <PIN pinname="Descriptive Name" slicecount="1" values="|Read from File|">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="58" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Read from File">
    </LINK>
    <LINK srcnodeid="54" srcpinname="EX9 Out" dstnodeid="39" dstpinname="Source">
    </LINK>
    <NODE systemname="Mesh (EX9.Geometry Join Subsets)" filename="%VVVV%\addonpack\lib\nodes\plugins\MeshJoinSubsets.dll" nodename="Mesh (EX9.Geometry Join Subsets)" componentmode="Hidden" id="60">
-   <BOUNDS type="Node" left="780" top="2556" width="100" height="100">
+   <BOUNDS type="Node" left="1260" top="2556" width="1260" height="276">
    </BOUNDS>
    <PIN pinname="PositionXYZ" visible="1">
    </PIN>
@@ -291,5 +255,145 @@
    <LINK srcnodeid="60" srcpinname="Mesh" dstnodeid="52" dstpinname="Mesh">
    </LINK>
    <LINK srcnodeid="51" srcpinname="Indices Bin Size" dstnodeid="60" dstpinname="Indices Bin Size">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="61" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="1776" top="612" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1776" top="612" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="|Read from File|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="61" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Read from File">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="62" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="1092" top="276" width="480" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="1092" top="276" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Boolean">
+   </PIN>
+   <PIN pinname="Behavior" slicecount="1" values="Toggle">
+   </PIN>
+   <PIN pinname="Descriptive Name" slicecount="1" values="Enabled">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="62" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Enabled">
+   </LINK>
+   <NODE systemname="VertexBuffer (EX9.Geometry Join)" nodename="VertexBuffer (EX9.Geometry Join)" componentmode="Hidden" id="63">
+   <BOUNDS type="Node" left="6432" top="5028" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="Mesh (EX9.Geometry Join Subsets)" filename="%VVVV%\addonpack\lib\nodes\plugins\MeshJoinSubsets.dll" nodename="Mesh (EX9.Geometry Join Subsets)" componentmode="Hidden" id="64">
+   <BOUNDS type="Node" left="6744" top="6096" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="65" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4236" top="1776" width="795" height="720">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4236" top="1776" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="3" values="0,,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="3">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Indices Bin Size" dstnodeid="65" dstpinname="Y Input Value">
+   </LINK>
+   <NODE systemname="Template (Value DynamicPins)" filename="%VVVV%\lib\nodes\plugins\DynamicPinsValueTemplate\DynamicPinsValueTemplate.csproj" nodename="Template (Value DynamicPins)" componentmode="Hidden" id="66">
+   <BOUNDS type="Node" left="5796" top="7488" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="67" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="4056" top="3564" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="4056" top="3564" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="2" values="0,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Vertices Bin Size" dstnodeid="67" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="68" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="5100" top="3636" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="5100" top="3636" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="2" values="0,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Normals Bin Size" dstnodeid="68" dstpinname="Y Input Value">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="70" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="6072" top="3648" width="795" height="960">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6072" top="3648" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Y Input Value" slicecount="4" values="0,,,">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="|0, 0, 0, 1|">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="Indices Bin Size" dstnodeid="70" dstpinname="Y Input Value">
    </LINK>
    </PATCH>
