@@ -137,7 +137,7 @@
    </PIN>
    <PIN pinname="Path" visible="1">
    </PIN>
-   <PIN pinname="Read from File" slicecount="1" values="1" visible="1">
+   <PIN pinname="Read from File" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Enabled" visible="1">
    </PIN>
@@ -183,7 +183,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="1452" top="6480" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="-9276" top="3048" width="8400" height="7524">
+   <BOUNDS type="Window" left="-9948" top="2436" width="8400" height="7524">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -264,4 +264,12 @@
    </LINK>
    <LINK srcnodeid="51" srcpinname="Mesh" dstnodeid="52" dstpinname="Mesh">
    </LINK>
+   <NODE systemname="Mesh (EX9.Geometry Join Subsets)" filename="%VVVV%\addonpack\lib\nodes\plugins\MeshJoinSubsets.dll" nodename="Mesh (EX9.Geometry Join Subsets)" componentmode="Hidden" id="60">
+   <BOUNDS type="Node" left="7656" top="4176" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <NODE systemname="VertexBuffer (EX9.Geometry Join)" nodename="VertexBuffer (EX9.Geometry Join)" componentmode="Hidden" id="61">
+   <BOUNDS type="Node" left="6228" top="2844" width="100" height="100">
+   </BOUNDS>
+   </NODE>
    </PATCH>
