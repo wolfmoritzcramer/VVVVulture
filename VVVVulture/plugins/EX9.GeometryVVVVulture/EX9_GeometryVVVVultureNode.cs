@@ -34,7 +34,7 @@ namespace VVVV.Nodes
 		[Input("Read from File")]
 		public ISpread<Boolean> FreadFile;
 		
-		[Input("Path")]
+		[Input("File", StringType = StringType.Filename)]
 		public ISpread<string> FfilePath;		
 	
 		[Output("Output")]
@@ -85,7 +85,7 @@ namespace VVVV.Nodes
 					if (Vulture != null){
 						
 						FOutput[0] = "Vulture is thereeeeeeee!";
-						
+				
 						FPos = Vulture.meshes[x].verticesVec3;
 						FNorm = Vulture.meshes[x].normalsVec3;
 						FTexcd = Vulture.meshes[x].texVec2;
@@ -125,7 +125,7 @@ namespace VVVV.Nodes
 			string name="vvvvulture.vulture";
 			try{
 				if (readFile){
-				    using (MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(filePath + name, FileMode.Open))
+				    using (MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(filePath, FileMode.Open))
 				    {
 				        using (MemoryMappedViewAccessor mmfReader = mmf.CreateViewAccessor())
 				        {
@@ -160,9 +160,7 @@ namespace VVVV.Nodes
 			var meshPin = FMeshOut;
 			meshPin.SliceCount = FInd.Length;
 			
-			int faceCount = 0;
-			foreach (Vector3 s in FInd)
-				faceCount += 3;
+			int faceCount = FInd.Length;
 
             Mesh mesh;
             MeshFlags flags = 0;

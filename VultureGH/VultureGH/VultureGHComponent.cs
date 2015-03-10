@@ -91,7 +91,6 @@ namespace VultureGH
 
             for (int i = 0; i < meshList.Count; i++)
             {
-                vvvv.meshes[i] = MeshToVultureMesh(meshList[i], "Test " + i.ToString());
                 Vulture.meshes[i] = MeshToVultureMesh3(meshList[i], "Test " + i.ToString());
             }
 
@@ -131,44 +130,6 @@ namespace VultureGH
             vMesh.texVec2 = tex2;
             vMesh.indicesVec3 = indices3;
 
-
-            return vMesh;
-        }
-
-        public vultureMesh MeshToVultureMesh(Mesh mesh, String description)
-        {
-
-            vultureMesh vMesh = new vultureMesh();
-            vMesh.description = description;
-            Point3d Location = Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.CameraLocation;
-            Vector3d Direction = Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.CameraDirection;
-            vMesh.description = Location.X.ToString() + " " + Location.Y.ToString() + " " + Location.Z.ToString() + "|" + Direction.X.ToString() + " " + Direction.Y.ToString() + " " + Direction.Z.ToString();
-
-            Point3d[] vertices = mesh.Vertices.ToPoint3dArray();
-            // mesh.Vertices.
-            // vMesh.vertices = new vultureVertex[vertices.Length];
-            vultureVertex[] vVertex = new vultureVertex[vertices.Length];
-            vultureVertex[] vNormal = new vultureVertex[vertices.Length];
-          
-            testList.Clear();
-            for (int i = 0; i < vertices.Length; i++)
-            {
-                vVertex[i] = new vultureVertex();
-                vVertex[i].x = vertices[i].X;
-                vVertex[i].y = vertices[i].Y;
-                vVertex[i].z = vertices[i].Z;
-                testList.Add(vertices[i]);
-                vNormal[i] = new vultureVertex();
-                vNormal[i].x = mesh.Normals[i].X;
-                vNormal[i].y = mesh.Normals[i].Y;
-                vNormal[i].z = mesh.Normals[i].Z;
-
-            }
-            vMesh.vertices = vVertex;
-            vMesh.normals = vNormal;
-           // int[] vIndices = mesh.Faces.ToIntArray(true);
-            vMesh.faceCount = mesh.Faces.Count;
-           // vMesh.indices = vIndices;
 
             return vMesh;
         }
