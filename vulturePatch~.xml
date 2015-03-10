@@ -1,19 +1,19 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta33.7.dtd" >
    <PATCH nodename="C:\Dropbox\# WORK\VVVVulture\vulturePatch.v4p" scrollx="0" scrolly="0" systemname="vulturePatch" filename="C:\Dropbox\# WORK\VVVVulture\vulturePatch.v4p" locked="0">
-   <BOUNDS type="Window" left="-20160" top="0" width="11700" height="12600">
+   <BOUNDS type="Window" left="-20160" top="0" width="11076" height="12600">
    </BOUNDS>
    <PACK Name="addonpack" Version="33.7.0">
    </PACK>
    <NODE systemname="Axis (DX9)" filename="%VVVV%\lib\nodes\modules\EX9\Axis (DX9).v4p" nodename="Axis (DX9)" componentmode="Hidden" id="15">
-   <BOUNDS type="Node" left="1452" top="5316" width="100" height="100">
+   <BOUNDS type="Node" left="624" top="5040" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Layer" visible="1">
    </PIN>
-   <BOUNDS type="Box" left="1452" top="5316">
+   <BOUNDS type="Box" left="624" top="5040">
    </BOUNDS>
    </NODE>
    <NODE systemname="Group (EX9)" nodename="Group (EX9)" componentmode="Hidden" id="14">
-   <BOUNDS type="Node" left="1464" top="5772" width="2724" height="276">
+   <BOUNDS type="Node" left="636" top="5496" width="2724" height="276">
    </BOUNDS>
    <PIN pinname="Layer 1" visible="1">
    </PIN>
@@ -31,7 +31,7 @@
    <LINK srcnodeid="15" srcpinname="Layer" dstnodeid="14" dstpinname="Layer 1">
    </LINK>
    <NODE systemname="Camera (Transform Softimage)" filename="%VVVV%\lib\nodes\modules\Transform\Camera (Transform Softimage).v4p" nodename="Camera (Transform Softimage)" componentmode="Hidden" id="10">
-   <BOUNDS type="Node" left="2433" top="6147" width="100" height="100">
+   <BOUNDS type="Node" left="1605" top="5871" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Far Plane" slicecount="1" values="1000">
    </PIN>
@@ -47,7 +47,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Writer (EX9.Texture)" nodename="Writer (EX9.Texture)" componentmode="Hidden" id="38">
-   <BOUNDS type="Node" left="2976" top="8064" width="100" height="100">
+   <BOUNDS type="Node" left="2148" top="7788" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Texture" visible="1">
    </PIN>
@@ -57,7 +57,7 @@
    </PIN>
    </NODE>
    <NODE systemname="DX9Texture (EX9.Texture)" nodename="DX9Texture (EX9.Texture)" componentmode="Hidden" id="39">
-   <BOUNDS type="Node" left="2964" top="7128" width="100" height="100">
+   <BOUNDS type="Node" left="2136" top="6852" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Source" visible="1" slicecount="1" values="||">
    </PIN>
@@ -67,9 +67,9 @@
    <LINK srcnodeid="39" srcpinname="Texture Out" dstnodeid="38" dstpinname="Texture">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="40" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="3348" top="7452" width="480" height="480">
+   <BOUNDS type="Box" left="2520" top="7176" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="3348" top="7452" width="0" height="0">
+   <BOUNDS type="Node" left="2520" top="7176" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
@@ -86,18 +86,10 @@
    </NODE>
    <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="38" dstpinname="Save">
    </LINK>
-   <NODE systemname="Renderer (TTY)" nodename="Renderer (TTY)" componentmode="InAWindow" id="45">
-   <BOUNDS type="Node" left="4188" top="12" width="100" height="100">
-   </BOUNDS>
-   <BOUNDS type="Box" left="4188" top="12" width="14652" height="1668">
-   </BOUNDS>
-   <BOUNDS type="Window" left="-13380" top="240" width="12432" height="1920">
-   </BOUNDS>
-   </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="47" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="996" top="840" width="420" height="396">
+   <BOUNDS type="Box" left="168" top="564" width="420" height="396">
    </BOUNDS>
-   <BOUNDS type="Node" left="996" top="840" width="0" height="0">
+   <BOUNDS type="Node" left="168" top="564" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -117,9 +109,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="49" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="996" top="2376" width="3504" height="444">
+   <BOUNDS type="Box" left="2736" top="2460" width="4212" height="288">
    </BOUNDS>
-   <BOUNDS type="Node" left="996" top="2376" width="0" height="0">
+   <BOUNDS type="Node" left="2736" top="2460" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -131,13 +123,13 @@
    </PIN>
    </NODE>
    <NODE systemname="VVVVulture (EX9.Geometry)" filename="VVVVulture\plugins\EX9.GeometryVVVVulture\EX9.GeometryVVVVulture.csproj" nodename="VVVVulture (EX9.Geometry)" componentmode="Hidden" id="51">
-   <BOUNDS type="Node" left="1008" top="1920" width="1128" height="276">
+   <BOUNDS type="Node" left="180" top="1644" width="1404" height="276">
    </BOUNDS>
    <PIN pinname="Output" visible="1">
    </PIN>
    <PIN pinname="Path" visible="1">
    </PIN>
-   <PIN pinname="Read from File" slicecount="1" values="1" visible="1">
+   <PIN pinname="Read from File" slicecount="1" visible="1" values="1">
    </PIN>
    <PIN pinname="Enabled" visible="1">
    </PIN>
@@ -145,13 +137,23 @@
    </PIN>
    <PIN pinname="File" slicecount="1" visible="1" values="|Sample File\vvvvulture.vulture|">
    </PIN>
+   <PIN pinname="VerticesXYZ" visible="1">
+   </PIN>
+   <PIN pinname="NormalsXYZ" visible="1">
+   </PIN>
+   <PIN pinname="TexCoordXY" visible="1">
+   </PIN>
+   <PIN pinname="IndicesXYZ" visible="1">
+   </PIN>
+   <PIN pinname="Indices Bin Size" visible="1">
+   </PIN>
    </NODE>
    <LINK srcnodeid="51" srcpinname="Output" dstnodeid="49" dstpinname="Input String">
    </LINK>
    <LINK srcnodeid="47" srcpinname="Y Output Value" dstnodeid="51" dstpinname="Enabled">
    </LINK>
    <NODE systemname="GouraudDirectional (EX9.Effect)" filename="%VVVV%\lib\nodes\effects\GouraudDirectional.fx" nodename="GouraudDirectional (EX9.Effect)" componentmode="Hidden" id="52">
-   <BOUNDS type="Node" left="1920" top="4200" width="100" height="100">
+   <BOUNDS type="Node" left="1092" top="3924" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Mesh" visible="1" slicecount="1" values="||">
    </PIN>
@@ -161,9 +163,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="53" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="2400" top="3288" width="792" height="720">
+   <BOUNDS type="Box" left="1572" top="3012" width="792" height="720">
    </BOUNDS>
-   <BOUNDS type="Node" left="2400" top="3288" width="0" height="0">
+   <BOUNDS type="Node" left="1572" top="3012" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="3" visible="1" values="0,1.37,1.83">
    </PIN>
@@ -179,11 +181,11 @@
    <LINK srcnodeid="53" srcpinname="Y Output Value" dstnodeid="52" dstpinname="Light Direction XYZ">
    </LINK>
    <NODE systemname="Renderer (EX9)" nodename="Renderer (EX9)" componentmode="InAWindow" id="54">
-   <BOUNDS type="Node" left="1452" top="6480" width="100" height="100">
+   <BOUNDS type="Node" left="624" top="6204" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="1452" top="6480" width="2400" height="1800">
+   <BOUNDS type="Box" left="624" top="6204" width="2400" height="1800">
    </BOUNDS>
-   <BOUNDS type="Window" left="-9276" top="3048" width="8400" height="7524">
+   <BOUNDS type="Window" left="-8688" top="144" width="8400" height="7524">
    </BOUNDS>
    <PIN pinname="Layers" visible="1">
    </PIN>
@@ -223,9 +225,9 @@
    <LINK srcnodeid="52" srcpinname="Layer" dstnodeid="14" dstpinname="Layer 2">
    </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="57" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="2088" top="1584" width="3660" height="240">
+   <BOUNDS type="Box" left="1524" top="1272" width="3660" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="2088" top="1584" width="0" height="0">
+   <BOUNDS type="Node" left="1524" top="1272" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Input String" slicecount="1" visible="1" values="|Sample File\vvvvulture.vulture|">
    </PIN>
@@ -241,9 +243,9 @@
    <LINK srcnodeid="57" srcpinname="Output String" dstnodeid="51" dstpinname="File">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="58" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="1536" top="1104" width="420" height="396">
+   <BOUNDS type="Box" left="708" top="828" width="420" height="396">
    </BOUNDS>
-   <BOUNDS type="Node" left="1536" top="1104" width="0" height="0">
+   <BOUNDS type="Node" left="708" top="828" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="1">
    </PIN>
@@ -262,6 +264,32 @@
    </LINK>
    <LINK srcnodeid="54" srcpinname="EX9 Out" dstnodeid="39" dstpinname="Source">
    </LINK>
-   <LINK srcnodeid="51" srcpinname="Mesh" dstnodeid="52" dstpinname="Mesh">
+   <NODE systemname="Mesh (EX9.Geometry Join Subsets)" filename="%VVVV%\addonpack\lib\nodes\plugins\MeshJoinSubsets.dll" nodename="Mesh (EX9.Geometry Join Subsets)" componentmode="Hidden" id="60">
+   <BOUNDS type="Node" left="780" top="2556" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="PositionXYZ" visible="1">
+   </PIN>
+   <PIN pinname="NormalXYZ" visible="1">
+   </PIN>
+   <PIN pinname="Texture CoordinateXY" visible="1">
+   </PIN>
+   <PIN pinname="IndicesXYZ" visible="1">
+   </PIN>
+   <PIN pinname="Mesh" visible="1">
+   </PIN>
+   <PIN pinname="Indices Bin Size" visible="1" slicecount="1" values="5688">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="51" srcpinname="VerticesXYZ" dstnodeid="60" dstpinname="PositionXYZ">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="NormalsXYZ" dstnodeid="60" dstpinname="NormalXYZ">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="TexCoordXY" dstnodeid="60" dstpinname="Texture CoordinateXY">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="IndicesXYZ" dstnodeid="60" dstpinname="IndicesXYZ">
+   </LINK>
+   <LINK srcnodeid="60" srcpinname="Mesh" dstnodeid="52" dstpinname="Mesh">
+   </LINK>
+   <LINK srcnodeid="51" srcpinname="Indices Bin Size" dstnodeid="60" dstpinname="Indices Bin Size">
    </LINK>
    </PATCH>
