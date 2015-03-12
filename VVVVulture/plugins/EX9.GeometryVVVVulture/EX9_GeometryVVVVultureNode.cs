@@ -35,7 +35,7 @@ namespace VVVV.Nodes
 		public ISpread<Boolean> FreadFile;
 		
 		[Input("File", StringType = StringType.Filename)]
-		public ISpread<string> FfilePath;		
+		public IDiffSpread<string> FfilePath;		
 	
 		[Output("Output")]
 		public ISpread<string> FOutput;
@@ -50,6 +50,11 @@ namespace VVVV.Nodes
 		 ISpread<ISpread<Vector2>> Ftex2;
 		[Output("Indices")]
 		 ISpread<ISpread<Vector3>> Findices;
+		[Output("Lights")]
+		 ISpread<Vector3> Flights;
+		[Output("Cameras")]
+		 ISpread<Vector3> Fcameras;
+		
 		
 		//[Output("Centroid", Order = 1)]
 		//ISpread<Vector3D> FCen;
@@ -63,47 +68,70 @@ namespace VVVV.Nodes
 		Vector3[] FNorm;
 		Vector3[] FInd;
 		Vector2[] FTexcd;
-		
+		bool read = true;
+		bool init = true;
+				   
 		
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-
-		//	int x = 0;
-	
 			if (Fenabled[0]){
-
-				try{
-					
-					// Open the file
-					Vulture = ReadObjectFromMMF(FreadFile[0],FfilePath[0]) as vulture;	
-
-					
-					if (Vulture != null){
+				if (read){
+					try{				
+						// Open the file
+						Vulture = ReadObjectFromMMF(FreadFile[0],FfilePath[0]) as vulture;	
 						
-						// Get the data
-						FOutput[0] = "Look! There he is! And he has "  + Vulture.meshes.Length + " Mesh(es) for you!";
+						// Init FileSystemWatcher
+						if (init || FfilePath.IsChanged){initWatcher(FfilePath[0]);}
 						
-						for (int i = 0; i < Vulture.meshes.Length; i++){
+						if (Vulture != null){
 		
-							Fvertices3[i] = Vulture.meshes[i].verticesVec3.ToSpread();
+							// Get the data
+						//	FOutput[0] = "Look! There he is! And he has "  + Vulture.meshes.Length + " Mesh(es) for you!";
 							Fvertices3.SliceCount = Vulture.meshes.Length;
-							Fnormals3[i] =Vulture.meshes[i].normalsVec3.ToSpread();
 							Fnormals3.SliceCount = Vulture.meshes.Length;
-							Ftex2[i] = Vulture.meshes[i].texVec2.ToSpread();
 							Ftex2.SliceCount = Vulture.meshes.Length;
-							Findices[i] = Vulture.meshes[i].indicesVec3.ToSpread();
 							Findices.SliceCount = Vulture.meshes.Length;
-						
+							
+							for (int i = 0; i < Vulture.meshes.Length; i++){
+								
+								Fvertices3[i] = Vulture.meshes[i].verticesVec3.ToSpread();
+								Fnormals3[i] =Vulture.meshes[i].normalsVec3.ToSpread();						
+								Ftex2[i] = Vulture.meshes[i].texVec2.ToSpread();			
+								Findices[i] = Vulture.meshes[i].indicesVec3.ToSpread();
+									
+							}
+							
+							//Flights = Vulture.lightPoints.ToSpread();
+							//Fcameras = Vulture.cameraPoints.ToSpread();
+							//FOutput[0] = Vulture.lightPoints[0].X.ToString();
+							
+							read = false;
 						}
-						//FOutput[0] = FInd.Length.ToString();
+						else{
+							//FOutput[0] = "Seems the vulture flew away!";
+						}
 					}
-					else{
-						FOutput[0] = "Seems the vulture flew away!";
-					}
-				}
-				catch{}
-			}		
+					catch{}
+				}	
+				
+			}
+		}
+		
+		public void initWatcher(string filePath){
+			
+			   FileSystemWatcher _fileWatcher = new FileSystemWatcher();
+			  _fileWatcher.Path = Path.GetDirectoryName(filePath);
+			  _fileWatcher.NotifyFilter = NotifyFilters.LastWrite;
+			  _fileWatcher.Filter = Path.GetFileName(filePath);
+			  _fileWatcher.Changed += new FileSystemEventHandler(OnChanged);
+			  _fileWatcher.EnableRaisingEvents = true;
+			init = false;
+		}
+		
+		private void OnChanged(object source, FileSystemEventArgs e)
+		{	
+			read = true;
 		}
 		
 		public object ByteArrayToObject(byte[] buffer)

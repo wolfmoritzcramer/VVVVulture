@@ -34,8 +34,10 @@ namespace VultureGH
         {
          //   pManager.AddPointParameter("Vertices", "V", "Vertices", GH_ParamAccess.list);
             pManager.AddMeshParameter("Mesh", "M", "Mesh", GH_ParamAccess.list);
+            pManager.AddPointParameter("Lights", "L", "Lights (1.Location 2.Direction | Same: PointLight)", GH_ParamAccess.list);
+            pManager.AddPointParameter("Cameras", "C", "Cameras (1.Location 2.Direction)", GH_ParamAccess.list);
             pManager.AddBooleanParameter("WriteFile", "WF", "Write the File to Disk", GH_ParamAccess.item, false);
-            pManager.AddTextParameter("Path", "P", "File Path", GH_ParamAccess.item, "C:\\TEMP\\");
+            pManager.AddTextParameter("Path", "P", "File Path", GH_ParamAccess.item, "");
         }
 
         /// <summary>
@@ -46,7 +48,6 @@ namespace VultureGH
             pManager.AddTextParameter("MessageOut", "sM", "Message that has been send", GH_ParamAccess.item);
         }
 
-        List<Point3d> testList = new List<Point3d>();
         /// <summary>
         /// This is the method that actually does the work.
         /// </summary>
@@ -55,48 +56,52 @@ namespace VultureGH
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             // Inputs abrufen und speichern
-            List<Point3d> verticesList = new List<Point3d>();
+            
             List<Mesh> meshList = new List<Mesh>();
+            List<Point3d> lightsList = new List<Point3d>();
+            List<Point3d> camerasList = new List<Point3d>();
+
             Boolean writeFile = false;
             String filePath = "";
 
+
             // vulture Initialisieren
-            vulture vvvv = new vulture();
+   
             vulture Vulture = new vulture();
 
             //if (!DA.GetDataList(0, intList)) return;
            // if (!DA.GetDataList(0, verticesList)) return;
             if (!DA.GetDataList(0, meshList)) return;
-            if (!DA.GetData(1, ref writeFile)) return;
-            if (!DA.GetData(2, ref filePath)) return;
+            if (!DA.GetDataList(1, lightsList)) return;
+            if (!DA.GetDataList(2, camerasList)) return;
+            if (!DA.GetData(3, ref writeFile)) return;
+            if (!DA.GetData(4, ref filePath)) return;
 
             Vulture.meshes = new vultureMesh[meshList.Count];
-            vvvv.meshes = new vultureMesh[meshList.Count];
-
-            // vultureMesh vMesh = new vultureMesh();
-
-            //vMesh.description = "test";
-            //vMesh.vertices = new vultureVertex[verticesList.Count];
-            //vultureVertex[] vVertex = new vultureVertex[verticesList.Count];
-
-            // for (int i = 0; i < verticesList.Count; i++)
-            // {
-            //     vVertex[i] = new vultureVertex();
-            //     vVertex[i].x = verticesList[i].X;
-            //     vVertex[i].y = verticesList[i].Y;
-            //     vVertex[i].z = verticesList[i].Z;
-            // }
-
-            //vMesh.vertices = vVertex;
 
             for (int i = 0; i < meshList.Count; i++)
             {
                 Vulture.meshes[i] = MeshToVultureMesh3(meshList[i], "Test " + i.ToString());
             }
 
+            Vulture.lightPoints = new Vector3[lightsList.Count];
+
+            for (int i = 0; i < lightsList.Count; i++)
+            {
+                //Vulture.lightPoints[i] = new Vector3(toFloat(lightsList[i].X), toFloat(lightsList[i].Y), toFloat(lightsList[i].Z));
+                Vulture.lightPoints[i] = new Vector3(0, 1 ,0);
+            }
+
+            Vulture.cameraPoints = new Vector3[camerasList.Count];
+
+            for (int i = 0; i < camerasList.Count; i++)
+            {
+                Vulture.cameraPoints[i] = new Vector3(toFloat(camerasList[i].X), toFloat(camerasList[i].Y), toFloat(camerasList[i].Z));
+            }
+
             WriteObjectToMMF(Vulture, filePath, writeFile);
-            DA.SetDataList(0, testList);
-            // DA.SetData(0, test.ToString());
+
+             DA.SetData(0, Vulture.lightPoints.Length.ToString());
             //  DA.SetData(0, verticesList[0].X.ToString());
         }
 
@@ -134,6 +139,20 @@ namespace VultureGH
             return vMesh;
         }
 
+
+        public float toFloat(Double input)
+        {
+            float result = (float) input;
+            if (float.IsPositiveInfinity(result))
+            {
+                result = float.MaxValue;
+            } else if (float.IsNegativeInfinity(result))
+            {
+                result = float.MinValue;
+            }
+            return result;
+        }
+
         //------------------------------------------------------------------------------------------------------------------------- SPEICHERN
 
         public void WriteObjectToMMF(object objectData, string filePath, Boolean writeFile)
@@ -143,7 +162,7 @@ namespace VultureGH
             String name = "vvvvulture.vulture";
             try
             {
-                if (writeFile)
+                if (!filePath.Equals(""))
                 {
                     using (MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(filePath + name, FileMode.Create, null, buffer.Length))
                     {
@@ -176,32 +195,6 @@ namespace VultureGH
         }
 
         //------------------------------------------------------------------------------------------------------------------------- SPEICHERN ENDE
-
-
-
-
-
-
-
-
-        private String sendString(string data)
-        {
-
-            byte[] dataBy = StringToByteArray(data);
-            MemoryMappedFile file = MemoryMappedFile.CreateOrOpen("wolvvvv", dataBy.Length + 62);
-            MemoryMappedViewAccessor writer = file.CreateViewAccessor(0, dataBy.Length + 62);
-            writer.Write(54, (ulong)dataBy.Length);
-            writer.WriteArray(54 + 8, dataBy, 0, dataBy.Length);
-            //writer.WriteArray(54 + 8, data, 0, data.Length);
-
-            return data;
-        }
-
-        private byte[] StringToByteArray(string str)
-        {
-            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();
-            return enc.GetBytes(str);
-        }
 
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.

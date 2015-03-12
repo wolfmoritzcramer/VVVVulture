@@ -12,29 +12,18 @@ namespace vultureCommunicator
     {
         public string description;
         public vultureMesh[] meshes;
+        public Vector3[] cameraPoints;
+        public Vector3[] lightPoints;
     }
 
     [Serializable]
     public class vultureMesh
     {
         public string description;
-        public vultureVertex[] vertices;
-        public vultureVertex[] normals;
-        public int[] indices;
-        public int faceCount;
-        public int vertexCount;
         public Vector3[] verticesVec3;
         public Vector3[] normalsVec3;
         public Vector3[] indicesVec3;
         public Vector2[] texVec2;
-    }
-
-    [Serializable]
-    public class vultureVertex
-    {
-        public double x;
-        public double y;
-        public double z;
     }
 
 }
