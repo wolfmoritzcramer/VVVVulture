@@ -2,8 +2,8 @@ C:\AppData\Roaming\Grasshopper\Libraries\vvvvulture.dll
 C:\AppData\Roaming\Grasshopper\Libraries\vvvvulture.pdb
 C:\Dropbox\# WORK\VVVVulture\vulture\vulture\bin\Debug\SlimDX.dll
 C:\Dropbox\# WORK\VVVVulture\vulture\vulture\bin\Debug\SlimDX.xml
-C:\Dropbox\# WORK\VVVVulture\vulture\vulture\obj\Debug\vulture.csprojResolveAssemblyReference.cache
 C:\Dropbox\# WORK\VVVVulture\vulture\vulture\bin\Debug\vulture.dll
 C:\Dropbox\# WORK\VVVVulture\vulture\vulture\bin\Debug\vulture.pdb
 C:\Dropbox\# WORK\VVVVulture\vulture\vulture\obj\Debug\vulture.dll
 C:\Dropbox\# WORK\VVVVulture\vulture\vulture\obj\Debug\vulture.pdb
+C:\Dropbox\# WORK\VVVVulture\vulture\vulture\obj\Debug\vulture.csprojResolveAssemblyReference.cache

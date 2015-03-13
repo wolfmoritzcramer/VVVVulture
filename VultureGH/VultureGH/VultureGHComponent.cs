@@ -90,8 +90,8 @@ namespace VultureGH
 
             for (int l = 0; l < lightsList.Count; l++)
             {
-                //Vulture.lightPoints[l] = new Vector3(toFloat(lightsList[l].X), toFloat(lightsList[l].Y), toFloat(lightsList[l].Z));
-                Vulture.lightPoints[l] = new Vector3(0, 1 ,0);
+                Vulture.lightPoints[l] = new Vector3(toFloat(lightsList[l].X), toFloat(lightsList[l].Y), toFloat(lightsList[l].Z));
+                //Vulture.lightPoints[l] = new Vector3(0, 1 ,0);
             }
 
             Vulture.cameraPoints = new Vector3[camerasList.Count];

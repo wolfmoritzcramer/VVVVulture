@@ -23,7 +23,12 @@ using vultureCommunicator;
 namespace VVVV.Nodes
 {
 	#region PluginInfo
-	[PluginInfo(Name = "VVVVulture", Category = "EX9.Geometry", Help = "Node to communicate with Grasshopper via Vulture", Tags = "")]
+	[PluginInfo(Name = "VVVVulture", 
+				Category = "EX9.Geometry", 
+				Help = "Node to communicate with Grasshopper via Vulture", 
+				Tags = "",
+				Author = "Wolf Moritz Cramer | wolfmoritzcramer.de"
+	)]
 	#endregion PluginInfo
 	public class VVVVultureNode : IPluginEvaluate
 	{
@@ -97,10 +102,16 @@ namespace VVVV.Nodes
 								Findices[i]		= 	Vulture.meshes[i].indicesVec3.ToSpread();
 									
 							}
-							Flights.SliceCount = 2;
-							
-							Flights[0] = new Vector3(Vulture.lightPoints[0].X,1,0);//Vulture.lightPoints[0];
-							//Fcameras = Vulture.cameraPoints.ToSpread();
+						
+							Flights.SliceCount = Vulture.lightPoints.Length;
+							for (int i = 0; i < Vulture.lightPoints.Length; i++){
+								Flights[i] = Vulture.lightPoints[i];								
+							}
+							Fcameras.SliceCount = Vulture.cameraPoints.Length;
+							for (int i = 0; i < Vulture.cameraPoints.Length; i++){
+								Fcameras[i] = Vulture.cameraPoints[i];								
+							}
+
 							//FOutput[0] = Vulture.lightPoints[0].X.ToString();
 							
 							read = false;
