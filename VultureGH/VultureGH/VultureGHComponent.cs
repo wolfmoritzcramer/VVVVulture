@@ -76,27 +76,29 @@ namespace VultureGH
             if (!DA.GetDataList(2, camerasList)) return;
             if (!DA.GetData(3, ref writeFile)) return;
             if (!DA.GetData(4, ref filePath)) return;
-
+            
             Vulture.meshes = new vultureMesh[meshList.Count];
 
+            int offset = 0;
             for (int i = 0; i < meshList.Count; i++)
             {
-                Vulture.meshes[i] = MeshToVultureMesh3(meshList[i], "Test " + i.ToString());
+                Vulture.meshes[i] = MeshToVultureMesh3(meshList[i],offset, "Test " + i.ToString());
+                offset += Vulture.meshes[i].verticesVec3.Length;
             }
 
             Vulture.lightPoints = new Vector3[lightsList.Count];
 
-            for (int i = 0; i < lightsList.Count; i++)
+            for (int l = 0; l < lightsList.Count; l++)
             {
-                //Vulture.lightPoints[i] = new Vector3(toFloat(lightsList[i].X), toFloat(lightsList[i].Y), toFloat(lightsList[i].Z));
-                Vulture.lightPoints[i] = new Vector3(0, 1 ,0);
+                //Vulture.lightPoints[l] = new Vector3(toFloat(lightsList[l].X), toFloat(lightsList[l].Y), toFloat(lightsList[l].Z));
+                Vulture.lightPoints[l] = new Vector3(0, 1 ,0);
             }
 
             Vulture.cameraPoints = new Vector3[camerasList.Count];
 
-            for (int i = 0; i < camerasList.Count; i++)
+            for (int c = 0; c < camerasList.Count; c++)
             {
-                Vulture.cameraPoints[i] = new Vector3(toFloat(camerasList[i].X), toFloat(camerasList[i].Y), toFloat(camerasList[i].Z));
+                Vulture.cameraPoints[c] = new Vector3(toFloat(camerasList[c].X), toFloat(camerasList[c].Y), toFloat(camerasList[c].Z));
             }
 
             WriteObjectToMMF(Vulture, filePath, writeFile);
@@ -105,7 +107,7 @@ namespace VultureGH
             //  DA.SetData(0, verticesList[0].X.ToString());
         }
 
-        public vultureMesh MeshToVultureMesh3(Mesh mesh, String description)
+        public vultureMesh MeshToVultureMesh3(Mesh mesh,int offset, String description)
         {
             mesh.Faces.ConvertQuadsToTriangles();
             vultureMesh vMesh = new vultureMesh();
@@ -127,7 +129,7 @@ namespace VultureGH
 
             for (int f = 0; f < mesh.Faces.Count; f++)
             {
-                indices3[f] = new Vector3(mesh.Faces[f].A, mesh.Faces[f].B, mesh.Faces[f].C);
+                indices3[f] = new Vector3(mesh.Faces[f].A + offset, mesh.Faces[f].B + offset, mesh.Faces[f].C + offset);
             }
 
             vMesh.verticesVec3 = vertices3;

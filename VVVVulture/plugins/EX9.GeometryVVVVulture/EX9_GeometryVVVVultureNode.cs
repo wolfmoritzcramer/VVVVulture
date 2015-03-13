@@ -64,10 +64,6 @@ namespace VVVV.Nodes
 		#endregion fields & pins
 		
 		vulture Vulture;
-		Vector3[] FPos;
-		Vector3[] FNorm;
-		Vector3[] FInd;
-		Vector2[] FTexcd;
 		bool read = true;
 		bool init = true;
 				   
@@ -88,21 +84,22 @@ namespace VVVV.Nodes
 		
 							// Get the data
 						//	FOutput[0] = "Look! There he is! And he has "  + Vulture.meshes.Length + " Mesh(es) for you!";
-							Fvertices3.SliceCount = Vulture.meshes.Length;
-							Fnormals3.SliceCount = Vulture.meshes.Length;
-							Ftex2.SliceCount = Vulture.meshes.Length;
-							Findices.SliceCount = Vulture.meshes.Length;
+							Fvertices3.SliceCount	=	Vulture.meshes.Length;
+							Fnormals3.SliceCount	=	Vulture.meshes.Length;
+							Ftex2.SliceCount		=	Vulture.meshes.Length;
+							Findices.SliceCount		=	Vulture.meshes.Length;
 							
 							for (int i = 0; i < Vulture.meshes.Length; i++){
 								
-								Fvertices3[i] = Vulture.meshes[i].verticesVec3.ToSpread();
-								Fnormals3[i] =Vulture.meshes[i].normalsVec3.ToSpread();						
-								Ftex2[i] = Vulture.meshes[i].texVec2.ToSpread();			
-								Findices[i] = Vulture.meshes[i].indicesVec3.ToSpread();
+								Fvertices3[i]	=	Vulture.meshes[i].verticesVec3.ToSpread();
+								Fnormals3[i]	=	Vulture.meshes[i].normalsVec3.ToSpread();						
+								Ftex2[i]		=	Vulture.meshes[i].texVec2.ToSpread();			
+								Findices[i]		= 	Vulture.meshes[i].indicesVec3.ToSpread();
 									
 							}
+							Flights.SliceCount = 2;
 							
-							//Flights = Vulture.lightPoints.ToSpread();
+							Flights[0] = new Vector3(Vulture.lightPoints[0].X,1,0);//Vulture.lightPoints[0];
 							//Fcameras = Vulture.cameraPoints.ToSpread();
 							//FOutput[0] = Vulture.lightPoints[0].X.ToString();
 							
