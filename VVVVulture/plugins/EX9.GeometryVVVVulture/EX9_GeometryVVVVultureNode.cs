@@ -55,14 +55,14 @@ namespace VVVV.Nodes
 		 ISpread<ISpread<Vector2>> Ftex2;
 		[Output("Indices")]
 		 ISpread<ISpread<Vector3>> Findices;
-		[Output("Lights")]
-		 ISpread<Vector3> Flights;
-		[Output("Cameras")]
-		 ISpread<Vector3> Fcameras;
-		
-		
-		//[Output("Centroid", Order = 1)]
-		//ISpread<Vector3D> FCen;
+		[Output("RhinoCam")]
+		 ISpread<Vector3> Frhinocam;
+		[Output("Points")]
+		 ISpread<Vector3> Fpoints;
+		[Output("Integers")]
+		ISpread<int> Fintegers;
+		[Output("Strings")]
+		ISpread<string> Fstrings;
 
 		[Import()]
 		public ILogger FLogger;
@@ -103,21 +103,31 @@ namespace VVVV.Nodes
 									
 							}
 						
-							Flights.SliceCount = Vulture.lightPoints.Length;
-							for (int i = 0; i < Vulture.lightPoints.Length; i++){
-								Flights[i] = Vulture.lightPoints[i];								
-							}
-							Fcameras.SliceCount = Vulture.cameraPoints.Length;
+							Frhinocam.SliceCount = Vulture.cameraPoints.Length;
 							for (int i = 0; i < Vulture.cameraPoints.Length; i++){
-								Fcameras[i] = Vulture.cameraPoints[i];								
+								Frhinocam[i] = Vulture.cameraPoints[i];								
 							}
+							
+							Fpoints.SliceCount = Vulture.points.Length;
+							for (int i = 0; i < Vulture.points.Length; i++){
+								Fpoints[i] = Vulture.points[i];								
+							}
+							Fintegers.SliceCount = Vulture.integers.Length;
+							for (int i = 0; i < Vulture.integers.Length; i++){
+								Fintegers[i] = Vulture.integers[i];								
+							}
+							Fstrings.SliceCount = Vulture.strings.Length;
+							for (int i = 0; i < Vulture.strings.Length; i++){
+								Fstrings[i] = Vulture.strings[i];								
+							}
+							
 
 							//FOutput[0] = Vulture.lightPoints[0].X.ToString();
 							
 							read = false;
 						}
 						else{
-							//FOutput[0] = "Seems the vulture flew away!";
+							FOutput[0] = "Seems the vulture flew away!";
 						}
 					}
 					catch{}

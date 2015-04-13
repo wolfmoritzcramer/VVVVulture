@@ -14,6 +14,10 @@ namespace vultureCommunicator
         public vultureMesh[] meshes;
         public Vector3[] cameraPoints;
         public Vector3[] lightPoints;
+        public Vector3[] points;
+        public int[] integers;
+        public string[] strings;
+
     }
 
     [Serializable]

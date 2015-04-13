@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VultureGH", "VultureGH\VultureGH.csproj", "{CE5B525A-AE13-4AD0-A921-F7C5B0BCC29E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA} = {45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vulture", "..\vulture\vulture\vulture.csproj", "{45C3ED00-CB01-4E2D-96AC-2B6ACB205ACA}"
 EndProject

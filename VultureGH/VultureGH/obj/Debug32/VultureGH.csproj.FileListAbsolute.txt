@@ -9,3 +9,5 @@ C:\Dropbox\# WORK\VVVVulture\VultureGH\VultureGH\obj\Debug32\VultureGH.dll
 C:\Dropbox\# WORK\VVVVulture\VultureGH\VultureGH\obj\Debug32\VultureGH.pdb
 C:\Dropbox\# WORK\VVVVulture\VultureGH\VultureGH\bin\Microsoft.QualityTools.Testing.Fakes.dll
 C:\Dropbox\# WORK\VVVVulture\VultureGH\VultureGH\bin\vulture.pdb
+C:\Dropbox\# WORK\VVVVulture\VultureGH\VultureGH\obj\Debug32\VultureGH.Properties.Resources.resources
+C:\Dropbox\# WORK\VVVVulture\VultureGH\VultureGH\obj\Debug32\VultureGH.csproj.GenerateResource.Cache

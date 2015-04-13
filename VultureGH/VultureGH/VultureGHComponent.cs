@@ -34,10 +34,14 @@ namespace VultureGH
         {
          //   pManager.AddPointParameter("Vertices", "V", "Vertices", GH_ParamAccess.list);
             pManager.AddMeshParameter("Mesh", "M", "Mesh", GH_ParamAccess.list);
-            pManager.AddPointParameter("Lights", "L", "Lights (1.Location 2.Direction | Same: PointLight)", GH_ParamAccess.list);
-            pManager.AddPointParameter("Cameras", "C", "Cameras (1.Location 2.Direction)", GH_ParamAccess.list);
-            pManager.AddBooleanParameter("WriteFile", "WF", "Write the File to Disk", GH_ParamAccess.item, false);
-            pManager.AddTextParameter("Path", "P", "File Path", GH_ParamAccess.item, "");
+           // pManager.AddPointParameter("Lights", "L", "Lights (1.Location 2.Direction | Same: PointLight)", GH_ParamAccess.list);
+          //  pManager.AddPointParameter("Cameras", "C", "Cameras (1.Location 2.Direction)", GH_ParamAccess.list);
+            pManager.AddPointParameter("Points", "P", "Points List", GH_ParamAccess.list, new Point3d(0,0,0));
+            pManager.AddIntegerParameter("Integer", "I", "Integer List", GH_ParamAccess.list, 0);
+            pManager.AddTextParameter("Text", "T", "String/Text List", GH_ParamAccess.list, "");        
+            pManager.AddBooleanParameter("SendCam", "RhC", "Send RhinoCamera (ActiveViewport) Use TIMER to keep updated...", GH_ParamAccess.item, false);
+            pManager.AddTextParameter("Path", "P", "File Path (If empty, Data is written in the memory)", GH_ParamAccess.item, "");
+            pManager.AddBooleanParameter("Enable", "On", "Enables the Plugin", GH_ParamAccess.item, false);
         }
 
         /// <summary>
@@ -60,9 +64,12 @@ namespace VultureGH
             List<Mesh> meshList = new List<Mesh>();
             List<Point3d> lightsList = new List<Point3d>();
             List<Point3d> camerasList = new List<Point3d>();
-
-            Boolean writeFile = false;
+            List<Point3d> pointsList = new List<Point3d>();
+            List<int> intList = new List<int>();
+            List<string> strList = new List<string>();
             String filePath = "";
+            Boolean enabled = false;
+            Boolean sendCam = false;
 
 
             // vulture Initialisieren
@@ -72,38 +79,85 @@ namespace VultureGH
             //if (!DA.GetDataList(0, intList)) return;
            // if (!DA.GetDataList(0, verticesList)) return;
             if (!DA.GetDataList(0, meshList)) return;
-            if (!DA.GetDataList(1, lightsList)) return;
-            if (!DA.GetDataList(2, camerasList)) return;
-            if (!DA.GetData(3, ref writeFile)) return;
-            if (!DA.GetData(4, ref filePath)) return;
+            if (!DA.GetDataList(1, pointsList)) return;
+            if (!DA.GetDataList(2, intList)) return;
+            if (!DA.GetDataList(3, strList)) return;   
+            if (!DA.GetData(4, ref sendCam)) return;
+            if (!DA.GetData(5, ref filePath)) return;
+            if (!DA.GetData(6, ref enabled)) return;
+
+            if (enabled)
+            {
+
+                Vulture.meshes = new vultureMesh[meshList.Count];
+
+                int offset = 0;
+                for (int i = 0; i < meshList.Count; i++)
+                {
+                    Vulture.meshes[i] = MeshToVultureMesh3(meshList[i], offset, "" + i.ToString());
+                    offset += Vulture.meshes[i].verticesVec3.Length;
+                }
+
+
+
+                if (sendCam)
+                {
+                    Vulture.cameraPoints = new Vector3[3];
+                    Point3d location = Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.CameraLocation;
+                    Point3d target = Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.CameraTarget;
+                    double hDAngle, hVAngle, hHAngle;
+                    Rhino.RhinoDoc.ActiveDoc.Views.ActiveView.ActiveViewport.GetCameraAngle(out hDAngle, out hVAngle, out hHAngle);
+                    Vulture.cameraPoints[0] = new Vector3(toFloat(location.X), toFloat(location.Z), toFloat(location.Y));
+                    Vulture.cameraPoints[1] = new Vector3(toFloat(target.X), toFloat(target.Z), toFloat(target.Y));
+                    Vulture.cameraPoints[2] = new Vector3(toFloat(hDAngle), toFloat(hVAngle), toFloat(hHAngle));
+                }
+                else
+                {
+                    Vulture.cameraPoints = new Vector3[1];
+                    Vulture.cameraPoints[0] = new Vector3(0, 0, 0);
+                }
+
+                Vulture.points = new Vector3[pointsList.Count];
+                for (int p = 0; p < pointsList.Count; p++)
+                {
+                    Vulture.points[p] = new Vector3(toFloat(pointsList[p].X), toFloat(pointsList[p].Z), toFloat(pointsList[p].Y));
             
-            Vulture.meshes = new vultureMesh[meshList.Count];
+                }
 
-            int offset = 0;
-            for (int i = 0; i < meshList.Count; i++)
-            {
-                Vulture.meshes[i] = MeshToVultureMesh3(meshList[i],offset, "Test " + i.ToString());
-                offset += Vulture.meshes[i].verticesVec3.Length;
+
+                Vulture.integers = new int[intList.Count];
+                for (int I = 0; I < intList.Count; I++)
+                {
+                    Vulture.integers[I] = intList[I];
+
+                }
+
+                Vulture.strings = new string[strList.Count];
+                for (int I = 0; I < intList.Count; I++)
+                {
+                    Vulture.strings[I] = strList[I];
+
+                }
+
+
+                //Vulture.lightPoints = new Vector3[lightsList.Count];
+
+                //for (int l = 0; l < lightsList.Count; l++)
+                //{
+                //    Vulture.lightPoints[l] = new Vector3(toFloat(lightsList[l].X), toFloat(lightsList[l].Z), toFloat(lightsList[l].Y));
+                //    //Vulture.lightPoints[l] = new Vector3(0, 1 ,0);
+                //}
+
+                //Vulture.cameraPoints = new Vector3[camerasList.Count];
+
+                //for (int c = 0; c < camerasList.Count; c++)
+                //{
+                //    Vulture.cameraPoints[c] = new Vector3(toFloat(camerasList[c].X), toFloat(camerasList[c].Z), toFloat(camerasList[c].Y));
+                //}
+
+                WriteObjectToMMF(Vulture, filePath);
             }
-
-            Vulture.lightPoints = new Vector3[lightsList.Count];
-
-            for (int l = 0; l < lightsList.Count; l++)
-            {
-                Vulture.lightPoints[l] = new Vector3(toFloat(lightsList[l].X), toFloat(lightsList[l].Y), toFloat(lightsList[l].Z));
-                //Vulture.lightPoints[l] = new Vector3(0, 1 ,0);
-            }
-
-            Vulture.cameraPoints = new Vector3[camerasList.Count];
-
-            for (int c = 0; c < camerasList.Count; c++)
-            {
-                Vulture.cameraPoints[c] = new Vector3(toFloat(camerasList[c].X), toFloat(camerasList[c].Y), toFloat(camerasList[c].Z));
-            }
-
-            WriteObjectToMMF(Vulture, filePath, writeFile);
-
-             DA.SetData(0, Vulture.lightPoints.Length.ToString());
+             DA.SetData(0, "");
             //  DA.SetData(0, verticesList[0].X.ToString());
         }
 
@@ -122,8 +176,8 @@ namespace VultureGH
            
             for (int v = 0; v < mesh.Vertices.Count; v++)
             {
-                vertices3[v] = new Vector3(mesh.Vertices[v].X, mesh.Vertices[v].Y, mesh.Vertices[v].Z);
-                normals3[v] = new Vector3(mesh.Normals[v].X, mesh.Normals[v].Y, mesh.Normals[v].Z);
+                vertices3[v] = new Vector3(mesh.Vertices[v].X, mesh.Vertices[v].Z, mesh.Vertices[v].Y);
+                normals3[v] = new Vector3(mesh.Normals[v].X, mesh.Normals[v].Z, mesh.Normals[v].Y);
                 tex2[v] = new Vector2(mesh.TextureCoordinates[v].X, mesh.TextureCoordinates[v].Y);
             }
 
@@ -157,7 +211,7 @@ namespace VultureGH
 
         //------------------------------------------------------------------------------------------------------------------------- SPEICHERN
 
-        public void WriteObjectToMMF(object objectData, string filePath, Boolean writeFile)
+        public void WriteObjectToMMF(object objectData, string filePath)
         {
             byte[] buffer = ObjectToByteArray(objectData);
 
@@ -208,7 +262,7 @@ namespace VultureGH
             {
                 // You can add image files to your project resources and access them like this:
                 //return Resources.IconForThisComponent;
-                return null;
+                return Properties.Resources.logoNode15;
             }
         }
 
