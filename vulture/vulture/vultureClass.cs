@@ -15,7 +15,7 @@ namespace vultureCommunicator
         public Vector3[] cameraPoints;
         public Vector3[] lightPoints;
         public Vector3[] points;
-        public int[] integers;
+        public float[] floats;
         public string[] strings;
 
     }

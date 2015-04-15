@@ -36,33 +36,35 @@ namespace VVVV.Nodes
 		[Input("Enabled")]
 		public ISpread<Boolean> Fenabled;
 		
-		[Input("Read from File")]
-		public ISpread<Boolean> FreadFile;
-		
 		[Input("File", StringType = StringType.Filename)]
 		public IDiffSpread<string> FfilePath;		
 	
 		[Output("Output")]
 		public ISpread<string> FOutput;
 		
-		
-
 		[Output("Vertices")]
-		 ISpread<ISpread<Vector3>> Fvertices3;
+		public ISpread<ISpread<Vector3>> Fvertices3;
+		
 		[Output("Normals")]
-		 ISpread<ISpread<Vector3>> Fnormals3;
+		public ISpread<ISpread<Vector3>> Fnormals3;
+		
 		[Output("TexCoord")]
-		 ISpread<ISpread<Vector2>> Ftex2;
+		public ISpread<ISpread<Vector2>> Ftex2;
+		
 		[Output("Indices")]
-		 ISpread<ISpread<Vector3>> Findices;
+		public ISpread<ISpread<Vector3>> Findices;
+		
 		[Output("RhinoCam")]
-		 ISpread<Vector3> Frhinocam;
+		public ISpread<Vector3> Frhinocam;
+		
 		[Output("Points")]
-		 ISpread<Vector3> Fpoints;
-		[Output("Integers")]
-		ISpread<int> Fintegers;
+		public ISpread<Vector3> Fpoints;
+		
+		[Output("Floats")]
+		public ISpread<float> Ffloats;
+		
 		[Output("Strings")]
-		ISpread<string> Fstrings;
+		public ISpread<string> Fstrings;
 
 		[Import()]
 		public ILogger FLogger;
@@ -77,10 +79,11 @@ namespace VVVV.Nodes
 		public void Evaluate(int SpreadMax)
 		{
 			if (Fenabled[0]){
+			
 				if (read){
 					try{				
 						// Open the file
-						Vulture = ReadObjectFromMMF(FreadFile[0],FfilePath[0]) as vulture;	
+						Vulture = ReadObjectFromMMF(FfilePath[0]) as vulture;	
 						
 						// Init FileSystemWatcher
 						if (init || FfilePath.IsChanged){initWatcher(FfilePath[0]);}
@@ -88,7 +91,6 @@ namespace VVVV.Nodes
 						if (Vulture != null){
 		
 							// Get the data
-						//	FOutput[0] = "Look! There he is! And he has "  + Vulture.meshes.Length + " Mesh(es) for you!";
 							Fvertices3.SliceCount	=	Vulture.meshes.Length;
 							Fnormals3.SliceCount	=	Vulture.meshes.Length;
 							Ftex2.SliceCount		=	Vulture.meshes.Length;
@@ -112,28 +114,29 @@ namespace VVVV.Nodes
 							for (int i = 0; i < Vulture.points.Length; i++){
 								Fpoints[i] = Vulture.points[i];								
 							}
-							Fintegers.SliceCount = Vulture.integers.Length;
-							for (int i = 0; i < Vulture.integers.Length; i++){
-								Fintegers[i] = Vulture.integers[i];								
+							Ffloats.SliceCount = Vulture.floats.Length;
+							for (int i = 0; i < Vulture.floats.Length; i++){
+								Ffloats[i] = Vulture.floats[i];								
 							}
 							Fstrings.SliceCount = Vulture.strings.Length;
 							for (int i = 0; i < Vulture.strings.Length; i++){
 								Fstrings[i] = Vulture.strings[i];								
 							}
 							
-
-							//FOutput[0] = Vulture.lightPoints[0].X.ToString();
-							
+							// read is set to true by the FileSystemWatcher via OnChanged function
 							read = false;
+							FOutput[0] = "Success!";
 						}
 						else{
-							FOutput[0] = "Seems the vulture flew away!";
+							FOutput[0] = "...Wait for it...";
+							
 						}
 					}
-					catch{}
+					catch{FOutput[0] = "";}
 				}	
 				
 			}
+			else {}
 		}
 		
 		public void initWatcher(string filePath){
@@ -159,9 +162,10 @@ namespace VVVV.Nodes
 		    return binaryFormatter.Deserialize(memoryStream);        // Deserialize stream to an object
 		}   
 		
-		public object ReadObjectFromMMF(bool readFile, string filePath)
+		public object ReadObjectFromMMF(string filePath)
 		{
-			string name="vvvvulture.vulture";
+			string name=".vltr";
+			bool readFile = true;
 			try{
 				if (readFile){
 				    using (MemoryMappedFile mmf = MemoryMappedFile.CreateFromFile(filePath, FileMode.Open))
